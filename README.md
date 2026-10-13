@@ -16,8 +16,8 @@
 | 검증 대상 | Android 콘텐츠 마켓 앱 (13개 카테고리) |
 | 기능 검증 | 요구사항 → 시나리오 → TC 설계, 자사/타사 단말 교차 수행, 업데이트 검증 |
 | 비기능 검증 | E2E 응답 시간(앱 실행), 소모 전류(배터리) |
-| 규모 | 기본 기능 TC **700건**(자사 350 / 타사 350), 업데이트 검증 단말 **61대** |
-| 결과 | 수행률 **100%**, Pass율 **99.5%**, 업데이트 검증 Fail **0건** |
+| 담당 | HOME 영역 기능 검증 |
+| 진행 관리 | Summary 시트로 카테고리별·단말별 진행 현황 실시간 확인 |
 | 사용 도구 | Excel(TC·결과 관리), QVIC(E2E 응답 시간 측정), Smart Power Scope / Auto Power Scope(전류 측정) |
 
 ---
@@ -27,7 +27,8 @@
 ### 1-1. 시나리오 분석 → 테스트 설계
 
 기획서의 프로세스 흐름도를 바탕으로 분기 조건마다 정상/예외 케이스를 뽑아 TC를 설계했습니다.
-아래는 **MDN(휴대폰 번호) 인증 프로세스** 예시입니다.
+아래는 시나리오 문서의 형태와 설계 방식을 보여주기 위한 **회원 영역(MDN 인증 프로세스)** 예시입니다.
+(본인 담당 영역은 HOME이며, 같은 방식으로 HOME 시나리오를 분석해 TC를 설계했습니다.)
 
 <img width="615" height="416" alt="MDN 인증 시나리오" src="https://github.com/user-attachments/assets/5e2d805b-eaf7-4fc9-a189-d59c30a16b73" />
 
@@ -60,33 +61,16 @@ TC 하나에 아래 항목을 관리해 **요구사항과 결과를 추적**할 
 
 <img width="1404" height="573" alt="Summary" src="https://github.com/user-attachments/assets/b188cb71-9c5d-41f1-beb1-91046810ba1b" />
 
-**기본 검증 Total**
+TC 시트의 결과(P/F)가 Summary 시트에 자동으로 집계되도록 구성해,
+**테스트 진행 현황을 실시간으로 확인**할 수 있게 했습니다.
 
-| TC 수 | 수행률 | Pass율 | Pass | Fail | 잔여 TC | 진행률 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 700 | 100.0% | 99.5% | 653 | 3 | 44 | 93.7% |
+- **전체 현황**: TC 수, 수행률, Pass율, Pass/Fail/N/A/N/T, 잔여 TC, 진행률을 한 줄로 확인
+- **카테고리별 현황**: HOME·게임·앱 등 기능 영역별로 진행률과 잔여 TC를 보여줘 지연 영역을 바로 파악
+- **자사 / 타사 단말 비교**: 같은 TC를 두 단말 환경에서 수행한 결과를 나란히 놓고 환경별 차이 확인
+- **업데이트 현황**: 통신사별·자급제 단말의 업데이트 검증 진행 상태 확인
+- 잔여 TC와 Fail 셀은 색으로 강조해 **우선 처리할 항목**이 바로 눈에 들어오게 했습니다.
 
-**자사 / 타사 단말 교차 검증 (각 350 TC, 13개 카테고리)**
-
-| 구분 | Pass | Fail | 잔여 TC | Pass율 | 진행률 |
-| --- | --- | --- | --- | --- | --- |
-| 자사 | 326 | 2 (HOME 1, 쇼핑 1) | 22 | 99.4% | 93.7% |
-| 타사 | 327 | 1 (쇼핑 1) | 22 | 99.7% | 93.7% |
-
-- 같은 TC를 자사/타사 단말에서 각각 수행해 **통신사·단말에 따라 달라지는 동작**을 확인했습니다.
-- 잔여 TC는 음악(15), 마이페이지(5) 등 일부 카테고리에 몰려 있고, 카테고리별로 진행률을 추적했습니다.
-
-**업데이트 검증**
-
-| 구분 | Pass | Fail | 진행 단말 수 |
-| --- | --- | --- | --- |
-| 통신사 A | 26 | 0 | 26 |
-| 통신사 B | 15 | 0 | 19 |
-| 통신사 C | 10 | 0 | 14 |
-| 자급제 | 2 | 0 | 2 |
-| **총합** | **53** | **0** | **61** |
-
-통신사별 단말과 자급제 단말 61대에서 앱 업데이트를 검증했고, Fail은 0건입니다.
+이 Summary로 일일 진행 상황을 공유하고, 일정 지연이나 결함이 몰린 영역을 빠르게 찾았습니다.
 
 ---
 
@@ -94,7 +78,7 @@ TC 하나에 아래 항목을 관리해 **요구사항과 결과를 추적**할 
 
 ### 2-1. E2E 응답 시간 (앱 실행 속도)
 
-<img width="1278" height="699" alt="E2E Response Time" src="https://github.com/user-attachments/assets/facc407d-2d79-407e-8ac7-8850a3fa1d01" />
+<img width="1278" height="699" alt="E2E Response Time" src="https://github.com/user-attachments/assets/dbde6c02-a16b-480a-ab18-b16dc75011f3" />
 
 - **도구**: QVIC — Memory Leak / E2E Response Time / App Traffic / Battery Consumption 중 *E2E Response Time* 선택
 - **방법**: 단말을 연결한 뒤 테스트 시나리오(앱 실행)를 반복 수행해 `앱 실행 → 앱 실행 확인`까지 걸린 시간을 측정
@@ -104,7 +88,7 @@ TC 하나에 아래 항목을 관리해 **요구사항과 결과를 추적**할 
 
 ### 2-2. 소모 전류 (배터리)
 
-<img width="1278" height="699" alt="Current Consumption" src="https://github.com/user-attachments/assets/dbde6c02-a16b-480a-ab18-b16dc75011f3" />
+<img width="1278" height="699" alt="Current Consumption" src="https://github.com/user-attachments/assets/facc407d-2d79-407e-8ac7-8850a3fa1d01" />
 
 - **도구**: Smart Power Scope(실시간 전류 파형), Auto Power Scope(시나리오 반복 자동 측정)
 - **방법**: 같은 시나리오를 여러 회차(7회) 반복 측정하고, 결과를 Excel Summary로 정리
