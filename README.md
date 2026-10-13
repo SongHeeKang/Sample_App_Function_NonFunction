@@ -36,7 +36,7 @@
 
 > 아래 이미지는 TC 문서 형식을 보여주기 위한 샘플(쇼핑·마이페이지 영역)입니다.
 
-<img width="1403" height="526" alt="Test Case" src="https://github.com/user-attachments/assets/eab4d9fe-43ae-42fb-a1f7-54d09e2466ba" />
+<img width="1403" height="526" alt="Test Case" src="docs/screenshots/01-test-case.png" />
 
 TC 하나에 아래 항목을 관리해 **요구사항과 결과를 추적**할 수 있게 했습니다.
 
@@ -54,7 +54,7 @@ TC 하나에 아래 항목을 관리해 **요구사항과 결과를 추적**할 
 
 ### 1-3. 수행 결과 요약
 
-<img width="1404" height="573" alt="Summary" src="https://github.com/user-attachments/assets/b188cb71-9c5d-41f1-beb1-91046810ba1b" />
+<img width="1404" height="573" alt="Summary" src="docs/screenshots/02-summary.png" />
 
 TC 시트의 결과(P/F)가 Summary 시트에 자동으로 집계되도록 구성해,
 **테스트 진행 현황을 실시간으로 확인**할 수 있게 했습니다.
@@ -73,7 +73,7 @@ TC 시트의 결과(P/F)가 Summary 시트에 자동으로 집계되도록 구�
 
 ### 2-1. E2E 응답 시간 (앱 실행 속도)
 
-<img width="1278" height="699" alt="E2E Response Time" src="https://github.com/user-attachments/assets/dbde6c02-a16b-480a-ab18-b16dc75011f3" />
+<img width="1278" height="699" alt="E2E Response Time" src="docs/screenshots/03-e2e-response-time.png" />
 
 - **도구**: QVIC — Memory Leak / E2E Response Time / App Traffic / Battery Consumption 중 *E2E Response Time* 선택
 - **방법**: 단말을 연결한 뒤 테스트 시나리오(앱 실행)를 반복 수행해 `앱 실행 → 앱 실행 확인`까지 걸린 시간을 측정
@@ -83,7 +83,7 @@ TC 시트의 결과(P/F)가 Summary 시트에 자동으로 집계되도록 구�
 
 ### 2-2. 소모 전류 (배터리)
 
-<img width="1278" height="699" alt="Current Consumption" src="https://github.com/user-attachments/assets/facc407d-2d79-407e-8ac7-8850a3fa1d01" />
+<img width="1278" height="699" alt="Current Consumption" src="docs/screenshots/04-current-consumption.png" />
 
 - **도구**: Smart Power Scope(실시간 전류 파형), Auto Power Scope(시나리오 반복 자동 측정)
 - **방법**: 같은 시나리오를 여러 회차(7회) 반복 측정하고, 결과를 Excel Summary로 정리

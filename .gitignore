@@ -1,5 +1,6 @@
-# 이미지는 GitHub 첨부 링크로 사용하므로 저장소에 올리지 않음
+# README 스크린샷은 docs/screenshots/ 에만 두고, 그 밖의 이미지는 올리지 않음
 *.png
 *.jpg
 *.jpeg
 *.gif
+!docs/screenshots/*
